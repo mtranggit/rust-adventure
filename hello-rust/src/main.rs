@@ -1,17 +1,19 @@
 use std::io;
+use std::process;
 
 fn main() {
     println!("Please enter your first number: ");
     let mut first = String::new();
     io::stdin().read_line(&mut first).unwrap();
 
-    let mut a: u32 = 0;
+    let a: u32;
     match first.trim().parse() {
         Ok(val) => {
             a = val;
         }
         Err(_err) => {
             println!("This is not a valid number");
+            process::exit(1);
         }
     }
 
@@ -19,13 +21,14 @@ fn main() {
     let mut second = String::new();
     io::stdin().read_line(&mut second).unwrap();
 
-    let mut b: u32 = 0;
+    let b: u32;
     match second.trim().parse() {
         Ok(val) => {
             b = val;
         }
         Err(_err) => {
             println!("This is not a valid number");
+            process::exit(1);
         }
     }
     let result = sum(a, b);
