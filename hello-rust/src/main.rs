@@ -1,5 +1,9 @@
 fn main() {
-    let name = "Michael";
-    let another_name = "Richard";
-    println!("Hello, {} and {}!", name, another_name);
+    let first = "Michael".to_string();
+    let last = "Trang".to_string();
+    say_name(first, last);
+}
+
+fn say_name(first: String, last: String) {
+    println!("Hello, {} {}!", first, last);
 }
