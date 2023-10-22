@@ -5,13 +5,13 @@ fn main() {
     let mut first = String::new();
     io::stdin().read_line(&mut first);
 
-    let a: u32 = first.trim().parse().unwrap();
+    let a: u32 = first.trim().parse().expect("This is not a valid number");
 
     println!("Please enter your second number: ");
     let mut second = String::new();
     io::stdin().read_line(&mut second);
 
-    let b: u32 = second.trim().parse().unwrap();
+    let b: u32 = second.trim().parse().expect("This is not a valid number");
     let result = sum(a, b);
     println!("{} + {} = {}", a, b, result);
 }
