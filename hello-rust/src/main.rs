@@ -2,6 +2,9 @@ use std::io;
 use std::process;
 
 fn main() {
+    // call lib
+    hello_rust::say_hello();
+    hello_rust::print_one_to_five();
     loop {
         println!("Please enter your first number: ");
         let a = read_input();
