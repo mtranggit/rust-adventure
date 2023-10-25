@@ -28,6 +28,10 @@ struct Args {
     output_dir: String,
 }
 
+// example to run the program
+// `cargo run -- -t bevy -t rust -t shaders -T "New shaders in Bevy 0.11`
+// or run the bin after cargo build
+// `./target/debug/scaffold -t bevy -t rust -t shaders -T "New shaders in Bevy 0.11`
 fn main() {
     let args = Args::parse();
     dbg!(args);
