@@ -26,7 +26,7 @@ struct Args {
 
     /// Location to put the file
     #[clap(short, long, default_value = "content")]
-    output_dir: String,
+    output_dir: PathBuf,
 }
 
 // example to run the program
@@ -36,13 +36,18 @@ struct Args {
 fn main() {
     let args = Args::parse();
     dbg!(&args);
-    let filename = format!("{}/{}.md", args.output_dir, args.title);
+    let mut filename = args.output_dir.join(&args.title);
+    filename.set_extension("md");
 
     if let Err(error) = fs::write(&filename, args.title) {
         let mut cmd = Args::command();
         cmd.error(
             ErrorKind::Io,
-            format!("failed to write file at `{filename}`\n\t{}", error),
+            format!(
+                "failed to write file at `{}`\n\t{}",
+                filename.display(),
+                error
+            ),
         )
         .exit();
     }
