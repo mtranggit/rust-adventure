@@ -1,4 +1,5 @@
-use clap::Parser;
+use clap::{error::ErrorKind, CommandFactory, Parser};
+use std::{fs, path::PathBuf};
 
 /// Scaffold a new post for your blog
 #[derive(Parser, Debug)]
@@ -34,5 +35,15 @@ struct Args {
 // `./target/debug/scaffold -t bevy -t rust -t shaders -T "New shaders in Bevy 0.11`
 fn main() {
     let args = Args::parse();
-    dbg!(args);
+    dbg!(&args);
+    let filename = format!("{}/{}.md", args.output_dir, args.title);
+
+    if let Err(error) = fs::write(&filename, args.title) {
+        let mut cmd = Args::command();
+        cmd.error(
+            ErrorKind::Io,
+            format!("failed to write file at `{filename}`\n\t{}", error),
+        )
+        .exit();
+    }
 }
