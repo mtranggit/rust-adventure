@@ -1,5 +1,6 @@
 use camino::Utf8PathBuf;
 use clap::{error::ErrorKind, CommandFactory, Parser};
+use slug::slugify;
 use std::fs;
 
 /// Scaffold a new post for your blog
@@ -50,6 +51,15 @@ fn main() {
     let mut filename = args.output_dir.join(&args.title);
     filename.set_extension("md");
 
+    let frontmatter = Frontmatter {
+        layout: args.layout,
+        tags: args.tags,
+        status: args.status,
+        title: args.title.clone(),
+        slug: slugify(&args.title),
+    };
+    dbg!(frontmatter);
+
     if let Err(error) = fs::write(&filename, args.title) {
         let mut cmd = Args::command();
         cmd.error(
@@ -58,4 +68,13 @@ fn main() {
         )
         .exit();
     }
+}
+
+#[derive(Debug)]
+struct Frontmatter {
+    layout: String,
+    tags: Vec<String>,
+    status: String,
+    title: String,
+    slug: String,
 }
