@@ -5,6 +5,7 @@
 	"lldb.verboseLogging": true,
 	"rust-analyzer.linkedProjects": [
 		"./hello-rust/Cargo.toml",
-		"./scaffold/Cargo.toml"
+		"./scaffold/Cargo.toml",
+		"./planetscale-csv-upload/Cargo.toml"
 	]
 }
