@@ -4,6 +4,7 @@
 	},
 	"lldb.verboseLogging": true,
 	"rust-analyzer.linkedProjects": [
-		"./hello-rust/Cargo.toml"
+		"./hello-rust/Cargo.toml",
+		"./scaffold/Cargo.toml"
 	]
 }
