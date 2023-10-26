@@ -9,4 +9,6 @@ authors = ["Michael Trang<michael.trang@hotmail.com>"]
 [dependencies]
 camino = "1.1.6"
 clap = { version = "4.4.6", features = ["derive"] }
+serde = { version = "1.0.190", features = ["derive"] }
+serde_yaml = "0.9.27"
 slug = "0.1.4"
