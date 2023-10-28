@@ -2,7 +2,8 @@ use std::collections::HashMap;
 use std::io;
 use std::process;
 
-use hello_rust::get_city;
+use hello_rust::build;
+use hello_rust::{get_city, Repo};
 
 fn main() {
     // call lib
@@ -56,6 +57,21 @@ fn main() {
     let z = &y[0..3];
     println!("Even number {:?} from {:?}", y, x);
     println!("Subset of 3 element of y {:?}", z);
+
+    // trait
+    let github = GitHub {
+        owner: "rust-lang".to_string(),
+        repo: "rust".to_string(),
+    };
+
+    let gitlab = GitLab {
+        user: "rust-lang".to_string(),
+        repo: "rust".to_string(),
+    };
+
+    // call build from lib
+    build(github);
+    build(gitlab);
 
     loop {
         println!("Please enter your first number: ");
@@ -119,4 +135,28 @@ impl URL {
 struct Person<'a> {
     name: &'a str,
     location: &'a str,
+}
+
+#[derive(Debug)]
+struct GitHub {
+    owner: String,
+    repo: String,
+}
+
+#[derive(Debug)]
+struct GitLab {
+    user: String,
+    repo: String,
+}
+
+impl Repo for GitHub {
+    fn get_clone_url(&self) -> String {
+        format!("https://github.com/{}/{}.git", self.owner, self.repo)
+    }
+}
+
+impl Repo for GitLab {
+    fn get_clone_url(&self) -> String {
+        format!("https://gitlab.com/{}/{}.git", self.user, self.repo)
+    }
 }

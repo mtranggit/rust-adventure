@@ -17,3 +17,12 @@ pub fn get_city<'a, 'b>(code: &'a str, airport_codes: &'b HashMap<&str, &str>) -
         .get(code)
         .expect("We don't know this location!")
 }
+
+pub trait Repo {
+    fn get_clone_url(&self) -> String;
+}
+
+pub fn build<T: Repo>(repo: T) {
+    let url = repo.get_clone_url();
+    println!("Cloning {}", url);
+}
