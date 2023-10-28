@@ -50,6 +50,13 @@ fn main() {
     //     get_city(&other.location, &airport_codes)
     // );
 
+    // iterator
+    let x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    let y: Vec<i32> = x.into_iter().filter(|a| a % 2 == 0).collect(); // collect even number
+    let z = &y[0..3];
+    println!("Even number {:?} from {:?}", y, x);
+    println!("Subset of 3 element of y {:?}", z);
+
     loop {
         println!("Please enter your first number: ");
         let a = read_input();
