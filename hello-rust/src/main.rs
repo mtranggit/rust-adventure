@@ -3,7 +3,7 @@ use std::fmt::{Display, Formatter, Result};
 use std::io;
 use std::process;
 
-use hello_rust::build;
+use hello_rust::{build, get_file_extension};
 use hello_rust::{get_city, Repo};
 
 fn main() {
@@ -77,6 +77,17 @@ fn main() {
     // call build from lib
     build(github);
     build(gitlab);
+
+    let string_input = String::from("./lib/lib.rs");
+    let extension = get_file_extension(&string_input);
+    println!("The file extension of {} is {}", string_input, extension);
+
+    let mut repos = Repositories {
+        values: vec![String::from("a"), String::from("b"), String::from("c")],
+    };
+    add_repository(&mut repos, String::from("d"));
+
+    println!("{:?}", repos.values);
 
     loop {
         println!("Please enter your first number: ");
@@ -175,5 +186,20 @@ impl Display for GitHub {
 impl Display for GitLab {
     fn fmt(&self, f: &mut Formatter<'_>) -> Result {
         write!(f, "GitLab: {}", self.get_clone_url())
+    }
+}
+
+struct Repositories {
+    values: Vec<String>,
+}
+
+fn add_repository(current: &mut Repositories, new: String) {
+    let values = current.as_mut();
+    values.push(new);
+}
+
+impl AsMut<Vec<String>> for Repositories {
+    fn as_mut(&mut self) -> &mut Vec<String> {
+        &mut self.values
     }
 }

@@ -26,3 +26,8 @@ pub fn build<T: Repo>(repo: T) {
     let url = repo.get_clone_url();
     println!("Cloning {}", url);
 }
+
+pub fn get_file_extension(path: impl AsRef<str>) -> String {
+    let path = path.as_ref();
+    String::from(path.split(".").last().unwrap())
+}
