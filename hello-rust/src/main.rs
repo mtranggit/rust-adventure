@@ -1,4 +1,5 @@
 use std::collections::HashMap;
+use std::fmt::{Display, Formatter, Result};
 use std::io;
 use std::process;
 
@@ -68,6 +69,10 @@ fn main() {
         user: "rust-lang".to_string(),
         repo: "rust".to_string(),
     };
+
+    // it is now possible to print github, gitlab after impl Display
+    println!("Printing GitHub {}", github);
+    println!("Printing GitLab {}", gitlab);
 
     // call build from lib
     build(github);
@@ -158,5 +163,17 @@ impl Repo for GitHub {
 impl Repo for GitLab {
     fn get_clone_url(&self) -> String {
         format!("https://gitlab.com/{}/{}.git", self.user, self.repo)
+    }
+}
+
+impl Display for GitHub {
+    fn fmt(&self, f: &mut Formatter<'_>) -> Result {
+        write!(f, "GitHub: {}", self.get_clone_url())
+    }
+}
+
+impl Display for GitLab {
+    fn fmt(&self, f: &mut Formatter<'_>) -> Result {
+        write!(f, "GitLab: {}", self.get_clone_url())
     }
 }
