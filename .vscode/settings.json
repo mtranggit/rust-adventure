@@ -6,6 +6,7 @@
 	"rust-analyzer.linkedProjects": [
 		"./hello-rust/Cargo.toml",
 		"./scaffold/Cargo.toml",
-		"./planetscale-csv-upload/Cargo.toml"
+		"./planetscale-csv-upload/Cargo.toml",
+		"./guessing-game/Cargo.toml"
 	]
 }
