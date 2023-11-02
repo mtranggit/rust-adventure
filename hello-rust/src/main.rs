@@ -89,6 +89,18 @@ fn main() {
 
     println!("{:?}", repos.values);
 
+    // explore HashMap
+    let mut scores = HashMap::new();
+
+    scores.insert(String::from("Blue"), 10);
+
+    scores.entry(String::from("Yellow")).or_insert(50);
+    scores.entry(String::from("Blue")).or_insert(50);
+
+    for (key, value) in scores {
+        println!("{key}: {value}");
+    }
+
     loop {
         println!("Please enter your first number: ");
         let a = read_input();
