@@ -1,9 +1,11 @@
+use core::{num, panic};
 use std::collections::HashMap;
 use std::fmt::{Display, Formatter, Result};
-use std::io;
+use std::fs::File;
+use std::io::{self, ErrorKind};
 use std::process;
 
-use hello_rust::{build, get_file_extension};
+use hello_rust::{build, get_file_extension, get_largest};
 use hello_rust::{get_city, Repo};
 
 fn main() {
@@ -100,6 +102,37 @@ fn main() {
     for (key, value) in scores {
         println!("{key}: {value}");
     }
+
+    let number_list = vec![34, 33, 50, 22, 55, 100, 65];
+    let result = get_largest(&number_list);
+    println!("The largest number is {}", result);
+
+    // explore error handling
+    let greeting_file_result = File::open("hello.txt");
+
+    let greeting_file = match greeting_file_result {
+        Ok(file) => file,
+        // Err(error) => panic!("Problem opening the file: {:?}", error),
+        Err(error) => match error.kind() {
+            ErrorKind::NotFound => match File::create("hello.txt") {
+                Ok(fc) => fc,
+                Err(e) => panic!("Problem creating the file: {:?}", e),
+            },
+            other_error => {
+                panic!("Problem opening the file: {:?}", other_error);
+            }
+        },
+    };
+
+    let goodbye_file = File::open("goodbye.txt").unwrap_or_else(|error| {
+        if error.kind() == ErrorKind::NotFound {
+            File::create("goodbye.txt").unwrap_or_else(|error| {
+                panic!("Problem creating the file {:?}", error);
+            })
+        } else {
+            panic!("Problem opening the file: {:?}", error);
+        }
+    });
 
     loop {
         println!("Please enter your first number: ");

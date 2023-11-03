@@ -31,3 +31,14 @@ pub fn get_file_extension(path: impl AsRef<str>) -> String {
     let path = path.as_ref();
     String::from(path.split(".").last().unwrap())
 }
+
+pub fn get_largest(list: &[i32]) -> &i32 {
+    let mut largest = &list[0];
+
+    for item in list {
+        if item > largest {
+            largest = item;
+        }
+    }
+    largest
+}
