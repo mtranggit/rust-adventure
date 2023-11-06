@@ -8,6 +8,7 @@
 		"./scaffold/Cargo.toml",
 		"./planetscale-csv-upload/Cargo.toml",
 		"./guessing-game/Cargo.toml",
-		"./adder/Cargo.toml"
+		"./adder/Cargo.toml",
+		"./minigrep/Cargo.toml"
 	]
 }
