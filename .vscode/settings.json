@@ -10,5 +10,8 @@
 		"./guessing-game/Cargo.toml",
 		"./adder/Cargo.toml",
 		"./minigrep/Cargo.toml"
+	],
+	"cSpell.words": [
+		"minigrep"
 	]
 }
