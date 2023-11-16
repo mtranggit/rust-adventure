@@ -9,6 +9,7 @@
 		"./planetscale-csv-upload/Cargo.toml",
 		"./guessing-game/Cargo.toml",
 		"./adder/Cargo.toml",
+		"./add/Cargo.toml",
 		"./minigrep/Cargo.toml"
 	],
 	"cSpell.words": [
