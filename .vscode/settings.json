@@ -6,6 +6,7 @@
 	"rust-analyzer.linkedProjects": [
 		"./add/Cargo.toml",
 		"./adder/Cargo.toml",
+		"./blog/Cargo.toml",
 		"./concurrency/Cargo.toml",
 		"./guessing-game/Cargo.toml",
 		"./hello-rust/Cargo.toml",
