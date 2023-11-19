@@ -10,6 +10,7 @@
 		"./concurrency/Cargo.toml",
 		"./guessing-game/Cargo.toml",
 		"./hello-rust/Cargo.toml",
+		"./iblog/Cargo.toml",
 		"./minigrep/Cargo.toml",
 		"./planetscale-csv-upload/Cargo.toml",
 		"./scaffold/Cargo.toml",
