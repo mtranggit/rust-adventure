@@ -12,6 +12,7 @@
 		"./hello-rust/Cargo.toml",
 		"./iblog/Cargo.toml",
 		"./minigrep/Cargo.toml",
+		"./patterns-matching/Cargo.toml",
 		"./planetscale-csv-upload/Cargo.toml",
 		"./scaffold/Cargo.toml",
 	],
