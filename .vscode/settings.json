@@ -9,6 +9,7 @@
 		"./blog/Cargo.toml",
 		"./concurrency/Cargo.toml",
 		"./guessing-game/Cargo.toml",
+		"./hello/Cargo.toml",
 		"./hello-rust/Cargo.toml",
 		"./iblog/Cargo.toml",
 		"./minigrep/Cargo.toml",
